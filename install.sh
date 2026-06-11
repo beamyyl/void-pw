@@ -1,7 +1,6 @@
 #!/bin/sh
 sudo xbps-remove -Ry pulseaudio
 sudo xbps-install -Sy pipewire wireplumber alsa-pipewire libspa-bluetooth pavucontrol
-
 sudo ln -sf /etc/sv/dbus /var/service/
 
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
@@ -14,13 +13,9 @@ sudo ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.
 
 mkdir -p "$HOME/.config/autostart"
 ln -sf /usr/share/applications/pipewire.desktop "$HOME/.config/autostart/"
-ln -sf /usr/share/applications/pipewire-pulse.desktop "$HOME/.config/autostart/"
 
-echo "--------------------------------------------------------"
-echo "Done! If you're running a Window Manager (i3, sway....),"
+echo "---------------------------------------------------------"
+echo 'Done! If you are running a Window Manager (i3, sway....),'
 echo "make sure to include these lines in your startup config:"
-echo ""
 echo "pipewire &"
-echo "pipewire-pulse &"
-echo "wireplumber &"
 echo "--------------------------------------------------------"
