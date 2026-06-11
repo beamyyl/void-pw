@@ -1,7 +1,8 @@
 #!/bin/sh
 sudo xbps-remove -Ry pulseaudio
-sudo xbps-install -Sy pipewire wireplumber alsa-pipewire libspa-bluetooth pavucontrol
+sudo xbps-install -Sy pipewire wireplumber alsa-pipewire libspa-bluetooth pavucontrol turnstile
 sudo ln -sf /etc/sv/dbus /var/service/
+sudo ln -sf /etc/sv/turnstiled /var/service/
 
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -sf /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
