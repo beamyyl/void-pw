@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Installing prerequisites..."
-sudo xbps-install -Sy pipewire wireplumber pipewire-alsa turnstile dbus
+sudo xbps-install -Sy pipewire wireplumber turnstile dbus
 
 echo "Enabling system services..."
 [ -e /var/service/turnstiled ] || sudo ln -s /etc/sv/turnstiled /var/service/
