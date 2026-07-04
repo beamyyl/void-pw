@@ -13,7 +13,7 @@ rm -f "$HOME/.config/autostart/pipewire.desktop"
 rm -rf "$HOME/.config/pipewire/pipewire.conf.d"
 rm -f "$HOME/.config/service/pipewire" "$HOME/.config/service/wireplumber"
 
-printf "Enter your choice (1 for XDG Autostart, 2 for Shell Profile, 3 to skip for GNOME/GDM): "
+printf "Enter your choice (1 for XDG Autostart, 2 for Shell Profile): "
 read choice
 
 case $choice in
@@ -29,11 +29,6 @@ case $choice in
     *)
         ;;
 esac
-        echo "$CMD" >> "$HOME/.zprofile"
-        echo "Added pw to shell profile."
-        ;;
-    *)
-        echo "Invalid choice. Skipping autostart configuration."
         echo "You will need to manually start 'pipewire' to get audio."
         ;;
 esac
