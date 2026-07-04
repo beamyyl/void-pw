@@ -19,7 +19,15 @@ read choice
 case $choice in
     1)
         sudo mkdir -p /etc/xdg/autostart
-        sudo ln -sf /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+        sudo tee /etc/xdg/autostart/pipewire.desktop > /dev/null << 'EOF'
+[Desktop Entry]
+Name=PipeWire
+Comment=Start PipeWire with environment sync
+Exec=sh -c "pkill -x pipewire; sleep 2; pipewire"
+Terminal=false
+Type=Application
+NoDisplay=true
+EOF
         ;;
     2)
         CMD="if ! pgrep -x \"pipewire\" > /dev/null; then pipewire >/dev/null 2>&1 & fi"
