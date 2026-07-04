@@ -13,13 +13,13 @@ rm -f "$HOME/.config/autostart/pipewire.desktop"
 rm -rf "$HOME/.config/pipewire/pipewire.conf.d"
 rm -f "$HOME/.config/service/pipewire" "$HOME/.config/service/wireplumber"
 
-printf "Enter your choice (1 for XDG Autostart, 2 for Shell Profile): "
+printf "Enter your choice (1 for Global XDG Autostart, 2 for Shell Profile): "
 read choice
 
 case $choice in
     1)
-        mkdir -p "$HOME/.config/autostart"
-        ln -sf /usr/share/applications/pipewire.desktop "$HOME/.config/autostart/"
+        sudo mkdir -p /etc/xdg/autostart
+        sudo ln -sf /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
         ;;
     2)
         CMD="if ! pgrep -x \"pipewire\" > /dev/null; then pipewire >/dev/null 2>&1 & fi"
@@ -29,11 +29,3 @@ case $choice in
     *)
         ;;
 esac
-        echo "You will need to manually start 'pipewire' to get audio."
-        ;;
-esac
-
-echo ""
-echo "========================================="
-echo "Done! Please reboot or re-login now."
-echo "========================================="
